@@ -1,0 +1,8 @@
+
+export enum ActionKey{
+    DO_SOMETHING =  "DO_SOMETHING",
+    INCREASE_COUNTER = "ADD_COUNTER",
+    DECREASE_COUNTER = "DECREASE_COUNTER"
+}
+
+console.log(ActionKey.DECREASE_COUNTER);
