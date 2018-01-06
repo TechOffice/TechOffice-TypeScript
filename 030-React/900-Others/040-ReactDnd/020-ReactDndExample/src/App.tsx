@@ -3,18 +3,25 @@ import * as ReactDOM from "react-dom";
 import Square from "./Square";
 import Knight from "./Knight";
 import Board from "./Board";
+import { knightPosition } from "./knightPosition";
+import { observer } from "./Observer";
 
 class App extends React.Component{
     
     render(){
         return (
-            <Board knightPosition={[7,4]}>
+            <Board knightPosition={knightPosition.getPosition()}>
             </Board>
         )
     }
 
 }
 
-ReactDOM.render(<App />, document.getElementById('app'));
+observer.setObserver(function(){
+    ReactDOM.render(
+        <Board knightPosition={knightPosition.getPosition()}/>, 
+        document.getElementById('app')
+    );    
+});
 
     

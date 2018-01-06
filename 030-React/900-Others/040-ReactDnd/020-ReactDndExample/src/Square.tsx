@@ -1,20 +1,24 @@
 import { Component } from "react";
 import * as React from "react";
+import { DropTarget } from "react-dnd";
+import { squareCollect } from "./SquareCollect";
+import { squareSpec } from "./SquareSpec";
 
-export default class Square extends Component<any, any> {
+class Square extends Component<any, any> {
     render() {
-        const { black } = this.props;
+        const { black, x, y, connectDropTarget, isOver, } = this.props;
         const fill = black ? 'black' : 'white';
         const stroke = black ? 'white' : 'black';
-        return <div style={{ 
+        return connectDropTarget(<div style={{ 
             backgroundColor: fill,
             color: stroke,
             width: '100%',
-            height: '100%'
-        }} >
+            height: '100%'}} >
             {this.props.children}
-        </div>;
+        </div>);
     }
   }
+
+  export default DropTarget<any>("knight", squareSpec, squareCollect)(Square);
 
   
