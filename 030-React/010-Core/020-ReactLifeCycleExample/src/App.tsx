@@ -1,6 +1,24 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 
+/**
+ * 
+ * Mounting
+ *      contructor()
+ *      componentWillMount()
+ *      render()
+ *      componentDidMount()
+ * 
+ * Updating
+ * 		componentWillReceiveProps()
+ * 		shouldComponentUpdate()
+ * 		componentWillUpdate()
+ * 		render()
+ * 		componentDidUpdate()
+ * 
+ * Unmounting
+ * 		componentWillUnmount()
+ */
 class App extends React.Component{
     
     constructor(props){
@@ -8,14 +26,14 @@ class App extends React.Component{
         console.log("contractor call");
     }
 
-    componentDidMount(){
-        console.log("componentDidMount call");    
-    }
-
     componentWillUnmount() {
         console.log("componentWillUnmount call");
     }
 
+    componentDidMount(){
+        console.log("componentDidMount call");    
+    }
+    
     render(){
         return (
             <div>

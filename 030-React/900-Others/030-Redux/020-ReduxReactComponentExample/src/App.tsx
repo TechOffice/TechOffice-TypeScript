@@ -29,7 +29,6 @@ class App extends React.Component<Props, State>{
     
     componentWillReceiveProps(nextProps){
         console.log('componentWillReceiveProps', nextProps);        
-        debugger;
     }
 
     componentWillUnmount() {
