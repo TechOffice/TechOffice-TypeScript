@@ -5,11 +5,10 @@ import AppModule from './AppModule';
 require('zone.js/dist/zone');
 
 if (process.env.ENV === 'production') {
-    debugger;
-    // Production
-  } else {
+
+} else {
     Error['stackTraceLimit'] = Infinity;
     require('zone.js/dist/long-stack-trace-zone');
-  }
+}
   
-  platformBrowserDynamic().bootstrapModule(AppModule);
+platformBrowserDynamic().bootstrapModule(AppModule);
