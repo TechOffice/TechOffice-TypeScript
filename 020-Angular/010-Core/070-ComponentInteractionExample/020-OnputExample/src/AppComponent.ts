@@ -3,7 +3,10 @@ import { Component } from "@angular/core";
 @Component({
     selector: "app-component",
     template: `
-        <app-detail-component [title]="title"></app-detail-component>
+        <app-detail-component 
+            [title]="title" 
+            (outputStr)="onUpdateOutputStr($event)">
+        </app-detail-component>
     `
 })
 export default class AppComponent{
@@ -11,6 +14,10 @@ export default class AppComponent{
 
     constructor(){
         this.title = "Hello";
+    }
+
+    onUpdateOutputStr(str: string){
+        alert(str);
     }
 
   
