@@ -7,11 +7,6 @@
             "label": "build",
             "type": "shell",
             "command": "tsc"
-        },
-        {
-            "label": "run",
-            "type": "shell",
-            "command": "node ${file}"    
         }
     ]
 }
