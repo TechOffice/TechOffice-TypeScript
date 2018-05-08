@@ -1,0 +1,16 @@
+{
+    "compilerOptions": {
+        "target": "es5",
+        "lib": ["es5", "es6", "dom"],
+        "module": "commonjs",
+        "sourceMap": true,
+        "outDir": "target",
+        "moduleResolution": "node",
+        "allowJs": true,
+        "experimentalDecorators": true,
+        "emitDecoratorMetadata": true
+    },
+    "include": [
+        "src/**/*"
+    ]
+}
