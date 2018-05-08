@@ -5,6 +5,9 @@ import { Component } from "@angular/core";
     template: `
         <h1>{{title}}</h1>
         <calendar></calendar>
+        <calendar></calendar>
+        <calendar></calendar>
+        <calendar></calendar>
     `
 })
 export default class AppComponent{
