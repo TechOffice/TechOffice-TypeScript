@@ -9,6 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@angular/forms": "^6.0.0",
     "@types/uniqid": "^4.1.2",
     "uniqid": "^4.1.1"
   },
