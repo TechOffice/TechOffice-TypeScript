@@ -6,7 +6,7 @@ import GridOption from "./datagrid/model/GridOption";
     selector: "app-component",
     template: `
         <h1>{{title}}</h1>
-        <datagrid [gridOption]="gridOption"><datagrid>
+        <datagrid [gridOption]="gridOption"></datagrid>
     `
 })
 export default class AppComponent{
@@ -19,6 +19,7 @@ export default class AppComponent{
         let columnDefinitions :ColumnDefinition[] = [];
         let columnDefinition: ColumnDefinition = new ColumnDefinition("name");
         columnDefinitions.push(columnDefinition);
+        this.gridOption.setColumnDefinitions(columnDefinitions);
     }
 }
 

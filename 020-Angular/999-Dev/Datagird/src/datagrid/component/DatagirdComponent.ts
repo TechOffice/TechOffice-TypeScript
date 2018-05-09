@@ -5,7 +5,7 @@ import GridOption from "../model/GridOption";
 
 
 @Component({
-    selector: 'dategrid',
+    selector: 'datagrid',
     template: `
         <table>
             <tr>
@@ -22,7 +22,7 @@ export class DatagridComponent{
     gridOption: GridOption;
 
     constructor(){
-
+        
     }
 
 
