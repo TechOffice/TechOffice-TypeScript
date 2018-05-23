@@ -11,6 +11,7 @@ import DragDropContext from "./DragDropContext";
             (drop)="drop($event)"
             (dragover)="dragover($event)">
             Detail {{id}}
+            <span>Testing</span>
         </div>
     `
 
@@ -19,10 +20,11 @@ export default class AppDetailComponent{
     
     @Input() id: string;
 
-    constructor(){
+    constructor(private viewContainerRef: ViewContainerRef){
     }
 
     dragstart(event){
+        debugger;
         console.log(this.id + ": start to drag");
         DragDropContext.getInstance().setId(this.id);
     }
