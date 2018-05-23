@@ -12,6 +12,9 @@ import AppDynamicComponent from './AppDynamicComponent';
       AppDetailComponent,
       AppDynamicComponent
     ],
+    entryComponents:[
+      AppDynamicComponent
+    ],
     imports: [
       BrowserModule
     ],

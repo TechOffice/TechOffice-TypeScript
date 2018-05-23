@@ -1,19 +1,27 @@
-import { Component, Input, ComponentFactoryResolver, ComponentFactory} from "@angular/core";
+import { Component, Input, ComponentFactoryResolver, ComponentFactory, ViewContainerRef} from "@angular/core";
 import AppDynamicComponent from "./AppDynamicComponent";
 
 @Component({
     selector: "app-detail-component",
     template: `
-        <div>Detail</div>
+        <h2>Detail</h2>
     `
 
 })
 export default class AppDetailComponent{
     
-    constructor(private componentFactoryResolver: ComponentFactoryResolver){
+    private appDynamicComponentComponentFactory: ComponentFactory<AppDynamicComponent>; 
+
+    constructor(
+        private componentFactoryResolver: ComponentFactoryResolver,
+        private viewContainer: ViewContainerRef){
         
-        
+            this.appDynamicComponentComponentFactory = 
+                componentFactoryResolver.resolveComponentFactory(AppDynamicComponent);
+
+            this.viewContainer.createComponent(this.appDynamicComponentComponentFactory);
     }
+
 
 
 }
