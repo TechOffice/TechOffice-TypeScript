@@ -11,9 +11,6 @@ import DynamicConfig from './DynamicConfig';
 @Component({
     selector: "dynamic-container-component",
     template: `
-        <div dragDrop>
-            Testing
-        </div>
     `
 })
 export default class DynamicContainerComponent implements OnInit{
