@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 
 @Component({
     selector: "input-component",
-    template: `<input/>`
+    template: `<input disabled/>`
 })
 export default class InputComponent{
     
