@@ -1,4 +1,4 @@
-import { ComponentFactory, ComponentRef, ElementRef, ViewChild, Injector } from '@angular/core';
+import { ComponentFactory, ComponentRef, ElementRef, ViewChild, Injector, Renderer2 } from '@angular/core';
 import { OnInit } from '@angular/core';
 import { ComponentFactoryResolver } from '@angular/core';
 import { ViewContainerRef } from '@angular/core';
@@ -11,6 +11,7 @@ import DynamicConfig from './DynamicConfig';
 @Component({
     selector: "dynamic-container-component",
     template: `
+        <div #container></div>
     `
 })
 export default class DynamicContainerComponent {
@@ -18,24 +19,29 @@ export default class DynamicContainerComponent {
     @Input()
     dynamicConfig: DynamicConfig;
 
+    @ViewChild("container", {read: ElementRef})
+    private elementRef: ElementRef;
+
     private isContainer: boolean;
     private componentRef: ComponentRef<any>;
     private componentRefs: ComponentRef<any>[] = [];
     
     constructor(
-        private elementRef: ElementRef,
         private componentFactoryResolver: ComponentFactoryResolver,
         private injector: Injector,
-        private viewContainer: ViewContainerRef
+        private viewContainer: ViewContainerRef,
+        private render: Renderer2
     ){}
 
     ngAfterViewInit(){
+        
         if (this.dynamicConfig){
             if (this.dynamicConfig.getType() == ComponentType.INPUT){
                 this.isContainer = false;
                 let componetFactory: ComponentFactory<InputComponent> = 
                     this.componentFactoryResolver.resolveComponentFactory(InputComponent);
                 this.componentRef = this.viewContainer.createComponent(componetFactory);
+                this.render.appendChild(this.elementRef.nativeElement, this.componentRef.location.nativeElement);
             }else {
                 this.isContainer = true;
                 let items: DynamicConfig[] = this.dynamicConfig.getItems();
@@ -46,17 +52,15 @@ export default class DynamicContainerComponent {
                             let componetFactory: ComponentFactory<InputComponent> = 
                                 this.componentFactoryResolver.resolveComponentFactory(InputComponent);
                             let componentRef: ComponentRef<InputComponent> = this.viewContainer.createComponent(componetFactory);
-                            this.elementRef.nativeElement.appendChild(componentRef.location.nativeElement);
                             this.componentRefs.push(componentRef);
-                            
+                            this.render.appendChild(this.elementRef.nativeElement, componentRef.location.nativeElement);
                         }else if (item.getType() == ComponentType.CONTAINER){
                             let componetFactory: ComponentFactory<DynamicContainerComponent> = 
                                 this.componentFactoryResolver.resolveComponentFactory(DynamicContainerComponent);
                             let componentRef: ComponentRef<DynamicContainerComponent> = this.viewContainer.createComponent(componetFactory);
-                            this.elementRef.nativeElement.appendChild(componentRef.location.nativeElement);
                             componentRef.instance.dynamicConfig = item;
-                            
                             this.componentRefs.push(componentRef);
+                            this.render.appendChild(this.elementRef.nativeElement, componentRef.location.nativeElement);
                         }
                     }
                 }

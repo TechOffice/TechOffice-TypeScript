@@ -5,7 +5,7 @@ import DynamicContainerComponent from "./DynamicContainerComponent";
 
 
 @Directive({
-    selector: "[dragDrop]"
+    selector: "[dragdrop]"
 })
 export default class DragDropDirective implements OnInit{
 
