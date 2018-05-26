@@ -113,6 +113,7 @@ export default class DynamicContainerComponent {
 
     click(event){
         DesignerContext.getInstance().setComponent(this);
+        event.stopPropagation();
     }
 
 }

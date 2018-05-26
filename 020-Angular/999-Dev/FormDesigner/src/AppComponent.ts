@@ -11,18 +11,22 @@ import DesignerComponent from "./DesignerComponent";
         <table>
             <tr>
                 <td>
-                    <designer-component
-                        #designer 
-                        [config]="config" >
-                    </designer-component>
-                </td>
-                <td>
                     <div>
                         Control Panel
                     </div>
                     <div>
                         <button (click)="add($event)">Add</button>
                     </div>
+                </td>
+                <td>
+                    <designer-component
+                        #designer 
+                        [config]="config" >
+                    </designer-component>
+                </td>
+                <td>   
+                    <designer-attribute-component>
+                    </designer-attribute-component>
                 </td>
             </tr>
         </table>

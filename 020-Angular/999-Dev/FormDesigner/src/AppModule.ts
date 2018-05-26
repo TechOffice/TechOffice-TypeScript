@@ -7,6 +7,7 @@ import DynamicContainerComponent from './DynamicContainerComponent';
 import DragDropDirective from './DragDropDirective';
 import InputComponent from './components/InputComponent';
 import DesignerComponent from './DesignerComponent';
+import DesingerAttributeComponent from './DesignerAttributeComponent';
 
 
 @NgModule({
@@ -15,6 +16,7 @@ import DesignerComponent from './DesignerComponent';
       AppDetailComponent,
       DynamicContainerComponent,
       DesignerComponent,
+      DesingerAttributeComponent,
       DragDropDirective,
       InputComponent
     ],
