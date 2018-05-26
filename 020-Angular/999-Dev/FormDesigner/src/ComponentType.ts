@@ -2,6 +2,7 @@
 
 export enum ComponentType {
     CONTAINER,
-    INPUT    
+    INPUT,
+    LABEL
 }
 

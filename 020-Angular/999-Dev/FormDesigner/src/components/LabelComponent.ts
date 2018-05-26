@@ -4,11 +4,13 @@ import DynamicConfig from '../DynamicConfig';
 
 
 @Component({
-    selector: "input-component",
-    template: `<input disabled/>`
+    selector: "label-component",
+    template: `
+        <span>{{config.value}}</span>
+    `
 })
-export default class InputComponent{
+export default class LabelComponent{
     
 
-
+    
 }

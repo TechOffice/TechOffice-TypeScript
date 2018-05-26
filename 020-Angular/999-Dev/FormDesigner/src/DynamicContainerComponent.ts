@@ -53,6 +53,7 @@ export default class DynamicContainerComponent {
                 let componetFactory: ComponentFactory<InputComponent> = 
                     this.componentFactoryResolver.resolveComponentFactory(InputComponent);
                 this.componentRef = this.viewContainer.createComponent(componetFactory);
+                
                 this.render.appendChild(this.elementRef.nativeElement, this.componentRef.location.nativeElement);
             }else {
                 this.isContainer = true;
