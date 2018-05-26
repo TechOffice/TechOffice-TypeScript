@@ -7,6 +7,7 @@ import DynamicConfig from "./DynamicConfig";
     template: `
         <h1>{{title}}</h1>
         <dynamic-container-component [dynamicConfig]="config"></dynamic-container-component>
+        <div>{{config.toJson()}}</div>
     `
 })
 export default class AppComponent implements OnInit {

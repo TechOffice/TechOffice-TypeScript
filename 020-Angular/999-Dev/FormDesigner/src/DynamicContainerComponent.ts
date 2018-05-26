@@ -9,6 +9,7 @@ import InputComponent from './components/InputComponent';
 import DynamicConfig from './DynamicConfig';
 import DrapDropContext from './DragDropContext';
 import DragDropContext from './DragDropContext';
+import ElementUtil from './ElementUtil';
 
 @Component({
     selector: "dynamic-container-component",
@@ -81,7 +82,14 @@ export default class DynamicContainerComponent {
         if(this.isContainer){
             let component : DynamicContainerComponent 
                 = DragDropContext.getInstance().getComponent();
-            this.render.appendChild(this.elementRef.nativeElement, component.elementRef.nativeElement);
+            if (!ElementUtil.isParentElement(this.elementRef.nativeElement, 
+                    component.elementRef.nativeElement)){
+                this.render.appendChild(this.elementRef.nativeElement, component.elementRef.nativeElement);
+                this.dynamicConfig.getItems().push(component.dynamicConfig);
+                var index = component.dynamicConfig.getParent().getItems().indexOf(component.dynamicConfig);
+                component.dynamicConfig.getParent().getItems().splice(index, 1);
+                component.dynamicConfig.setParent(this.dynamicConfig);
+            }
             event.stopPropagation();
         }
     }

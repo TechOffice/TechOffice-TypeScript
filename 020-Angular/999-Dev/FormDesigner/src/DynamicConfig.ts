@@ -5,6 +5,7 @@ export default class DynamicConfig{
 
     private type: ComponentType;
     private items: DynamicConfig[] = [];
+    private parent: DynamicConfig;
 
     public getType(): ComponentType{
         return this.type;
@@ -22,8 +23,15 @@ export default class DynamicConfig{
         this.items = items;
     }
 
+    public setParent(parent: DynamicConfig){
+        this.parent = parent;
+    }
+
+    public getParent(): DynamicConfig{
+        return this.parent;
+    }
+
     public assign(json: any): void{
-        
         this.type = json["type"];
         if (this.type == ComponentType.CONTAINER){
             if (json["items"] instanceof Array){
@@ -31,11 +39,19 @@ export default class DynamicConfig{
                 for (var i=0; i<items.length; i++){
                     var item = items[i];
                     let dynamicConfig: DynamicConfig = new DynamicConfig();
+                    dynamicConfig.setParent(this);
                     dynamicConfig.assign(item);
                     this.items.push(dynamicConfig);
                 }
             }
         }
+    }
 
+    public toJson(): String{
+        return JSON.stringify(this, function(key, value){
+            if (key != 'parent'){
+                return value;
+            }
+        });
     }
 }
