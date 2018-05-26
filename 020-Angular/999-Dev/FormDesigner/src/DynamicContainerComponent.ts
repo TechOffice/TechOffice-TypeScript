@@ -31,8 +31,8 @@ export default class DynamicContainerComponent {
     private elementRef: ElementRef;
 
     private isContainer: boolean;
-    private componentRef: ComponentRef<any>;
-    private componentRefs: ComponentRef<any>[] = [];
+    componentRef: ComponentRef<any>;
+    componentRefs: ComponentRef<any>[] = [];
     
     constructor(
         private componentFactoryResolver: ComponentFactoryResolver,
@@ -70,6 +70,17 @@ export default class DynamicContainerComponent {
             }
         }else {
             console.log("config does not exist");
+        }
+    }
+
+    add(config: DynamicConfig){
+        if (this.isContainer){
+            let componetFactory: ComponentFactory<DynamicContainerComponent> = 
+            this.componentFactoryResolver.resolveComponentFactory(DynamicContainerComponent);
+            let componentRef: ComponentRef<DynamicContainerComponent> = this.viewContainer.createComponent(componetFactory);
+            componentRef.instance.dynamicConfig = config;
+            this.render.appendChild(this.elementRef.nativeElement, componentRef.location.nativeElement);
+            this.componentRefs.push(componentRef);    
         }
     }
 
