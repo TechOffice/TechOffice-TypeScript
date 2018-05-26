@@ -4,6 +4,7 @@ import { ComponentType } from "./ComponentType";
 export default class DynamicConfig{
 
     private type: ComponentType;
+    private value: any;
     private items: DynamicConfig[] = [];
     private parent: DynamicConfig;
 
@@ -21,6 +22,14 @@ export default class DynamicConfig{
 
     public setItems(items: DynamicConfig[]){
         this.items = items;
+    }
+
+    public setValue(value: any){
+        this.value = value;
+    }
+
+    public getValue(): any{
+        return this.value;
     }
 
     public setParent(parent: DynamicConfig){

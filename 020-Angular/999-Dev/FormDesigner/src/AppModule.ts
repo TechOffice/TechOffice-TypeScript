@@ -8,7 +8,7 @@ import DragDropDirective from './DragDropDirective';
 import InputComponent from './components/InputComponent';
 import DesignerComponent from './DesignerComponent';
 import DesingerAttributeComponent from './DesignerAttributeComponent';
-
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
     declarations: [
@@ -25,7 +25,9 @@ import DesingerAttributeComponent from './DesignerAttributeComponent';
       InputComponent
     ],
     imports: [
-      BrowserModule
+      BrowserModule,
+      FormsModule,
+      ReactiveFormsModule
     ],
     providers: [],
     bootstrap: [AppComponent]

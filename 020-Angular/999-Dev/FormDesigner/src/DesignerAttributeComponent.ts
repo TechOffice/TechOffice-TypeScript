@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import DynamicConfig from './DynamicConfig';
 import DynamicContainerComponent from './DynamicContainerComponent';
 import DesignerContext from './DesignerContext';
+import { ComponentType } from './ComponentType';
 
 
 @Component({
@@ -12,10 +13,11 @@ import DesignerContext from './DesignerContext';
             <table>
                 <tr>
                     <td>Type</td>
-                    <td>{{component?component.dynamicConfig.toJson():''}}</td>
+                    <td>{{config?config.type:''}}</td>
                 </tr>
                 <tr>
                     <td>Label</td>
+                    <input [(ngModel)]="config.value" *ngIf="config"/>
                 </tr>
             </table>
         </div>
@@ -24,13 +26,20 @@ import DesignerContext from './DesignerContext';
 export default class DesingerAttributeComponent implements OnInit{
 
     private component: DynamicContainerComponent;
+    private config: DynamicConfig;
 
     ngOnInit(){
-        this.component = DesignerContext.getInstance().getComponent();
         DesignerContext.getInstance().setAttributeComponent(this);
+        this.component = DesignerContext.getInstance().getComponent();
+        if(this.component){
+            this.config = this.component.dynamicConfig;
+        }
     }
 
     updateSelectedComponent(component: DynamicContainerComponent){
         this.component = component;
+        if(this.component){
+            this.config = this.component.dynamicConfig;
+        }
     }
 }
