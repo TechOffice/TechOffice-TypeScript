@@ -25,7 +25,13 @@ export default class AppComponent implements OnInit {
                 {
                     type: ComponentType.CONTAINER,
                     items: [{
-                        type: ComponentType.INPUT
+                        type: ComponentType.CONTAINER,
+                        items: [{
+                            type: ComponentType.CONTAINER,
+                            items: [{
+                                type: ComponentType.INPUT
+                            }]
+                        }]
                     }]
                 }
             ]

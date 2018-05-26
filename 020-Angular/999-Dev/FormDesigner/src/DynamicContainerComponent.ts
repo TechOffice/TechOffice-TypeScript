@@ -11,7 +11,12 @@ import DynamicConfig from './DynamicConfig';
 @Component({
     selector: "dynamic-container-component",
     template: `
-        <div #container></div>
+        <div #container
+            draggable="true"
+            (dragstart)="dragstart($event)"
+            (drop)="drop($event)"
+            (dragover)="dragover($event)"
+            style="border: 1px solid; min-height: 30px"></div>
     `
 })
 export default class DynamicContainerComponent {
@@ -31,11 +36,13 @@ export default class DynamicContainerComponent {
         private injector: Injector,
         private viewContainer: ViewContainerRef,
         private render: Renderer2
-    ){}
+    ){
+        console.log("running");
+    }
 
-    ngAfterViewInit(){
-        
+    ngOnInit(){
         if (this.dynamicConfig){
+            console.log(this.dynamicConfig)
             if (this.dynamicConfig.getType() == ComponentType.INPUT){
                 this.isContainer = false;
                 let componetFactory: ComponentFactory<InputComponent> = 
@@ -48,27 +55,32 @@ export default class DynamicContainerComponent {
                 if (items){
                     for (var i=0; i<items.length; i++){
                         let item: DynamicConfig = items[i];
-                        if (item.getType() == ComponentType.INPUT){
-                            let componetFactory: ComponentFactory<InputComponent> = 
-                                this.componentFactoryResolver.resolveComponentFactory(InputComponent);
-                            let componentRef: ComponentRef<InputComponent> = this.viewContainer.createComponent(componetFactory);
-                            this.componentRefs.push(componentRef);
-                            this.render.appendChild(this.elementRef.nativeElement, componentRef.location.nativeElement);
-                        }else if (item.getType() == ComponentType.CONTAINER){
-                            let componetFactory: ComponentFactory<DynamicContainerComponent> = 
-                                this.componentFactoryResolver.resolveComponentFactory(DynamicContainerComponent);
-                            let componentRef: ComponentRef<DynamicContainerComponent> = this.viewContainer.createComponent(componetFactory);
-                            componentRef.instance.dynamicConfig = item;
-                            this.componentRefs.push(componentRef);
-                            this.render.appendChild(this.elementRef.nativeElement, componentRef.location.nativeElement);
-                        }
+                        let componetFactory: ComponentFactory<DynamicContainerComponent> = 
+                            this.componentFactoryResolver.resolveComponentFactory(DynamicContainerComponent);
+                        let componentRef: ComponentRef<DynamicContainerComponent> = 
+                            this.viewContainer.createComponent(componetFactory);
+                        componentRef.instance.dynamicConfig = item;
+                        this.componentRefs.push(componentRef);
+                        this.render.appendChild(this.elementRef.nativeElement, componentRef.location.nativeElement);
                     }
                 }
             }
         }else {
             console.log("config does not exist");
         }
+    }
 
+    dragstart(event){
+        debugger;
+    }
+
+    drop(event){
+        debugger;
+    }
+
+    dragover(event){
+        debugger;
+        event.preventDefault();
     }
 
 
