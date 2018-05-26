@@ -23,20 +23,7 @@ export default class AppDetailComponent{
     constructor(private viewContainerRef: ViewContainerRef){
     }
 
-    dragstart(event){
-        debugger;
-        console.log(this.id + ": start to drag");
-        DragDropContext.getInstance().setId(this.id);
-    }
 
-    drop(event){
-        let id: String = DragDropContext.getInstance().getId();
-        console.log(id+ ": dropped");
-    }
-
-    dragover(event){
-        event.preventDefault();
-    }
 }
 
 

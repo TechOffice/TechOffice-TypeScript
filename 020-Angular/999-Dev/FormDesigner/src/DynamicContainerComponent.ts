@@ -7,6 +7,8 @@ import { Component } from '@angular/core';
 import { ComponentType } from './ComponentType';
 import InputComponent from './components/InputComponent';
 import DynamicConfig from './DynamicConfig';
+import DrapDropContext from './DragDropContext';
+import DragDropContext from './DragDropContext';
 
 @Component({
     selector: "dynamic-container-component",
@@ -71,15 +73,20 @@ export default class DynamicContainerComponent {
     }
 
     dragstart(event){
-        debugger;
+        DrapDropContext.getInstance().setComponent(this);
+        event.stopPropagation();
     }
 
     drop(event){
-        debugger;
+        if(this.isContainer){
+            let component : DynamicContainerComponent 
+                = DragDropContext.getInstance().getComponent();
+            this.render.appendChild(this.elementRef.nativeElement, component.elementRef.nativeElement);
+            event.stopPropagation();
+        }
     }
 
     dragover(event){
-        debugger;
         event.preventDefault();
     }
 

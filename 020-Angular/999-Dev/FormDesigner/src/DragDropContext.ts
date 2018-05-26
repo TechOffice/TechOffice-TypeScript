@@ -1,3 +1,5 @@
+import DynamicContainerComponent from "./DynamicContainerComponent";
+
 
 export default class DrapDropContext{
     
@@ -7,14 +9,14 @@ export default class DrapDropContext{
         return DrapDropContext.instance;
     }
 
-    private id: String;
+    private component: DynamicContainerComponent;
 
-    public setId(id: String): void{
-        this.id = id;
+    public setComponent(component: DynamicContainerComponent): void{
+        this.component = component;
     }
 
-    public getId(): String{
-        return this.id;
+    public getComponent(): DynamicContainerComponent{
+        return this.component;
     }
 
 }
