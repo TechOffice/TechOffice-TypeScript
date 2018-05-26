@@ -19,7 +19,7 @@ import ElementUtil from './ElementUtil';
             (dragstart)="dragstart($event)"
             (drop)="drop($event)"
             (dragover)="dragover($event)"
-            style="border: 1px solid; min-height: 30px"></div>
+            style="border: 1px solid; min-height: 5px; margin: 5px 5px 5px 5px"></div>
     `
 })
 export default class DynamicContainerComponent {
@@ -93,8 +93,8 @@ export default class DynamicContainerComponent {
         if(this.isContainer){
             let component : DynamicContainerComponent 
                 = DragDropContext.getInstance().getComponent();
-            if (!ElementUtil.isParentElement(this.elementRef.nativeElement, 
-                    component.elementRef.nativeElement)){
+            if (!ElementUtil.isParentElement(component.elementRef.nativeElement, 
+                    this.elementRef.nativeElement)){
                 this.render.appendChild(this.elementRef.nativeElement, component.elementRef.nativeElement);
                 this.dynamicConfig.getItems().push(component.dynamicConfig);
                 var index = component.dynamicConfig.getParent().getItems().indexOf(component.dynamicConfig);
