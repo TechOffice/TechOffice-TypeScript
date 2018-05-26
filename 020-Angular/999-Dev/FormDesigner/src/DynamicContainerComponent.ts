@@ -10,6 +10,7 @@ import DynamicConfig from './DynamicConfig';
 import DrapDropContext from './DragDropContext';
 import DragDropContext from './DragDropContext';
 import ElementUtil from './ElementUtil';
+import DesignerContext from './DesignerContext';
 
 @Component({
     selector: "dynamic-container-component",
@@ -19,6 +20,7 @@ import ElementUtil from './ElementUtil';
             (dragstart)="dragstart($event)"
             (drop)="drop($event)"
             (dragover)="dragover($event)"
+            (click)="click($event)"
             style="border: 1px solid; min-height: 5px; margin: 5px 5px 5px 5px"></div>
     `
 })
@@ -109,5 +111,8 @@ export default class DynamicContainerComponent {
         event.preventDefault();
     }
 
+    click(event){
+        DesignerContext.getInstance().setComponent(this);
+    }
 
 }
