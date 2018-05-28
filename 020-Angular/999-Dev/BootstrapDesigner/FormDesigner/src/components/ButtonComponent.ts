@@ -5,7 +5,11 @@ import DynamicConfig from '../config/DynamicConfig';
 
 @Component({
     selector: "button-component",
-    template: `<button type="button" class="btn btn-primary">{{config.value}}</button>`
+    template: `
+        <button type="button" class="btn btn-primary" disabled>
+            {{config.value}}
+        </button>
+    `
 })
 export default class ButtonComponent{
     
