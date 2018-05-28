@@ -30,7 +30,7 @@ export default class DynamicContainerComponent {
     @Input()
     dynamicConfig: DynamicConfig;
 
-    private isContainer: boolean;
+    isContainer: boolean;
 
     @ViewChild("container", {read: ElementRef})
     elementRef: ElementRef;
