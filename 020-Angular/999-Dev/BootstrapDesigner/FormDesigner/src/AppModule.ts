@@ -11,6 +11,7 @@ import DynamicContainerComponent from './designer/DynamicContainerComponent';
 import DesignerAttributeComponent from './designer/DesignerAttributeComponent';
 import DesignerControlPanelComponent from './designer/DesignerControlPanelComponent';
 import DesignerControlPanelElementComponent from './designer/DesignerControlPanelElementComponent';
+import LabelComponent from './components/LabelComponent';
 
 @NgModule({
     declarations: [
@@ -20,11 +21,13 @@ import DesignerControlPanelElementComponent from './designer/DesignerControlPane
       DesignerAttributeComponent,
       DesignerControlPanelComponent,
       DesignerControlPanelElementComponent,
-      InputComponent
+      InputComponent,
+      LabelComponent
     ],
     entryComponents:[
       DynamicContainerComponent,
-      InputComponent
+      InputComponent,
+      LabelComponent
     ],
     imports: [
       BrowserModule,

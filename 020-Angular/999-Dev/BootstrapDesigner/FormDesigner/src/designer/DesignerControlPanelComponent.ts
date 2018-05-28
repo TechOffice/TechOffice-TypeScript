@@ -11,14 +11,6 @@ import DesignerComponent from './DesignerComponent';
         </div>
         <div>
             <designer-control-panel-element-component
-                [componentType]="'1'"
-                [type]="'Input'"
-                [config]="config"
-                [designer]="designer">
-            </designer-control-panel-element-component>
-        </div>
-        <div>
-            <designer-control-panel-element-component
                 [componentType]="'0'"
                 [type]="'Row'"
                 [config]="config"
@@ -33,6 +25,23 @@ import DesignerComponent from './DesignerComponent';
                 [config]="config"
                 [designer]="designer"
                 [value]="'col'">
+            </designer-control-panel-element-component>
+        </div>
+        <div>
+            <designer-control-panel-element-component
+                [componentType]="'1'"
+                [type]="'Input'"
+                [config]="config"
+                [designer]="designer">
+            </designer-control-panel-element-component>
+        </div>
+        <div>
+            <designer-control-panel-element-component
+                [componentType]="'2'"
+                [type]="'Label'"
+                [config]="config"
+                [designer]="designer"
+                [value]="'new label'">
             </designer-control-panel-element-component>
         </div>
     `

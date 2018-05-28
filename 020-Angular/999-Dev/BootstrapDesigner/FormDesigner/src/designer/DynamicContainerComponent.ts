@@ -51,10 +51,7 @@ export default class DynamicContainerComponent {
     ngOnInit(){
         if (this.dynamicConfig){
             console.log(this.dynamicConfig)
-            if (this.dynamicConfig.getType() == ComponentType.INPUT){
-                this.isContainer = false;
-                this.componentRef = ComponentFactoryService.createComponent(this.componentFactoryResolver, this.viewContainer, this.render, this.elementRef);
-            }else {
+            if (this.dynamicConfig.getType() == ComponentType.CONTAINER){
                 this.isContainer = true;
                 let items: DynamicConfig[] = this.dynamicConfig.getItems();
                 if (items){
@@ -69,6 +66,9 @@ export default class DynamicContainerComponent {
                         this.render.appendChild(this.elementRef.nativeElement, componentRef.location.nativeElement);
                     }
                 }
+            }else {
+                this.isContainer = false;
+                this.componentRef = ComponentFactoryService.createComponent(this.componentFactoryResolver, this.viewContainer, this.render, this.elementRef, this.dynamicConfig);
             }
         }else {
             console.log("config does not exist");

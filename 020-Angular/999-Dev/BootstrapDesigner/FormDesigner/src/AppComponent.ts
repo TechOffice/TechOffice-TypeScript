@@ -69,9 +69,10 @@ export default class AppComponent implements OnInit {
                             value: 'col',
                             items: [
                                 {
-                                    type: ComponentType.INPUT
+                                    type: ComponentType.LABEL,
+                                    value: '123'
                                 }
-                            ]
+                            ]   
                         }
                     ]
                 } 
