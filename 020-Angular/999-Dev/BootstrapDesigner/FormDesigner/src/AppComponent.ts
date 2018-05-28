@@ -1,8 +1,8 @@
+import { ComponentType } from './model/ComponentType';
 import { Component, OnInit, ComponentRef, ViewChild } from "@angular/core";
-import { ComponentType } from "./ComponentType";
-import DynamicConfig from "./DynamicConfig";
-import DynamicContainerComponent from "./DynamicContainerComponent";
-import DesignerComponent from "./DesignerComponent";
+
+import DynamicConfig from "./config/DynamicConfig";
+import DesignerComponent from "./designer/DesignerComponent";
 
 @Component({
     selector: "app-component",

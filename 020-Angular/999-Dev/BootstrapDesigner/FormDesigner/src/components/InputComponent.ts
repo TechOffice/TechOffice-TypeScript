@@ -1,6 +1,5 @@
 import { Input } from '@angular/core';
 import { Component } from '@angular/core';
-import DynamicConfig from '../DynamicConfig';
 
 
 @Component({
