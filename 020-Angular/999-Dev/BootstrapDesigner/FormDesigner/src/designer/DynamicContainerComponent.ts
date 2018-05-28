@@ -22,7 +22,15 @@ import DesignerContext from '../context/DesignerContext';
             (dragover)="dragover($event)"
             (click)="click($event)"
             style="border: 1px solid; min-height: 5px; margin: 5px 5px 5px 5px"
-            [ngClass]="{'col':isContainer && dynamicConfig.value == 'col', 'row': isContainer && dynamicConfig.value == 'row'}"></div>
+            [ngClass]="{
+                'col':isContainer && dynamicConfig.value == 'col', 
+                'row': isContainer && dynamicConfig.value == 'row',
+                'form-group': !isContainer
+            }"
+            [ngStyle]="{
+                'background-color': isSelected? 'yellow': 'white'
+            }">
+            </div>
     `
 })
 export default class DynamicContainerComponent {
@@ -31,6 +39,7 @@ export default class DynamicContainerComponent {
     dynamicConfig: DynamicConfig;
 
     isContainer: boolean;
+    isSelected: boolean = false;
 
     @ViewChild("container", {read: ElementRef})
     elementRef: ElementRef;
@@ -113,7 +122,11 @@ export default class DynamicContainerComponent {
 
     click(event){
         DesignerContext.getInstance().setComponent(this);
+        this.isSelected = true;
         event.stopPropagation();
     }
 
+    unselect(){
+        this.isSelected = false;
+    }
 }

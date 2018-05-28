@@ -4,6 +4,7 @@ import InputComponent from '../components/InputComponent';
 import DynamicConfig from '../config/DynamicConfig';
 import { ComponentType } from '../model/ComponentType';
 import LabelComponent from '../components/LabelComponent';
+import ButtonComponent from '../components/ButtonComponent';
 
 export default class ComponentFactoryService{
     
@@ -20,8 +21,10 @@ export default class ComponentFactoryService{
         let componetFactory: ComponentFactory<any>;
         if (config.getType() == ComponentType.INPUT){
             componetFactory = componentFactoryResolver.resolveComponentFactory(InputComponent);
-        }else {
+        }else if (config.getType() == ComponentType.LABEL) {
             componetFactory = componentFactoryResolver.resolveComponentFactory(LabelComponent);
+        }else if (config.getType() == ComponentType.BUTTON){
+            componetFactory = componentFactoryResolver.resolveComponentFactory(ButtonComponent);
         }
         let componentRef:   ComponentRef<any> = viewContainer.createComponent(componetFactory);
         componentRef.instance.config = config;

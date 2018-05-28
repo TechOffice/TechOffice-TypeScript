@@ -16,6 +16,9 @@ export default class DesignerContext{
     private attributeComponent: DesingerAttributeComponent;
 
     public setComponent(component: DynamicContainerComponent){
+        if (this.component != null){
+            this.component.unselect();
+        }
         this.component = component;
         this.attributeComponent.updateSelectedComponent(component);
     }

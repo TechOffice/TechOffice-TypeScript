@@ -7,12 +7,14 @@ import DesignerContext from '../context/DesignerContext';
 @Component({
     selector: "designer-control-panel-element-component",
     template: `
-        <button (click)="add($event)">{{type}}</button>
-        <button (click)="addInSelect($event)">In Select</button>
-        <button (click)="addWithRow($event)">Row</button>
-        <button (click)="addWithRowInSelect($event)">Row In Select</button>
-        <button (click)="addWithColInSelect($event)">Col In Select</button>
-        
+        <div>
+            <button (click)="add($event)">{{type}}</button>
+            <button (click)="addInSelect($event)">In Select</button>
+        </div>
+        <div>
+            <button (click)="addWithRowInSelect($event)">Row</button>
+            <button (click)="addWithColInSelect($event)">Col</button>
+        </div>
     `
 })
 export default class DesignerControlPanelElementComponent{

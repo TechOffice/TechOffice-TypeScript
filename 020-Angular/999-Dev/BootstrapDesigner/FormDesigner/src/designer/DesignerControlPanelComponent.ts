@@ -44,6 +44,15 @@ import DesignerComponent from './DesignerComponent';
                 [value]="'new label'">
             </designer-control-panel-element-component>
         </div>
+        <div>
+            <designer-control-panel-element-component
+                [componentType]="'3'"
+                [type]="'Button'"
+                [config]="config"
+                [designer]="designer"
+                [value]="'New Button'">
+            </designer-control-panel-element-component>
+        </div>
     `
 })
 export default class DesignerControlPanelComponent{
