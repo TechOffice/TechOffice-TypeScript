@@ -30,10 +30,11 @@ export default class DynamicContainerComponent {
     @Input()
     dynamicConfig: DynamicConfig;
 
-    @ViewChild("container", {read: ElementRef})
-    private elementRef: ElementRef;
-
     private isContainer: boolean;
+
+    @ViewChild("container", {read: ElementRef})
+    elementRef: ElementRef;
+
     componentRef: ComponentRef<any>;
     componentRefs: ComponentRef<any>[] = [];
     
@@ -41,7 +42,8 @@ export default class DynamicContainerComponent {
         private componentFactoryResolver: ComponentFactoryResolver,
         private injector: Injector,
         private viewContainer: ViewContainerRef,
-        private render: Renderer2
+        private render: Renderer2,
+        public componentElementRef: ElementRef
     ){
         console.log("running");
     }

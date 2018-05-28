@@ -23,9 +23,13 @@ export default class DesignerControlPanelElementComponent{
     @Input()
     type: String;
 
+    @Input()
+    value: any;
+
     add(event){
         let dynamicConfig: DynamicConfig = new DynamicConfig();
         dynamicConfig.setType(this.componentType);
+        dynamicConfig.setValue(this.value);
         this.config.getItems().push(dynamicConfig);
         dynamicConfig.setParent(this.config);
         this.designer.add(dynamicConfig);

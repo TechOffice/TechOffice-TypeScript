@@ -22,7 +22,17 @@ import DesignerComponent from './DesignerComponent';
                 [componentType]="'0'"
                 [type]="'Row'"
                 [config]="config"
-                [designer]="designer">
+                [designer]="designer"
+                [value]="'row'">
+            </designer-control-panel-element-component>
+        </div>
+        <div>
+            <designer-control-panel-element-component
+                [componentType]="'0'"
+                [type]="'Col'"
+                [config]="config"
+                [designer]="designer"
+                [value]="'col'">
             </designer-control-panel-element-component>
         </div>
     `

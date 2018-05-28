@@ -42,35 +42,39 @@ export default class AppComponent implements OnInit {
     constructor(){
         var configJson = {
             type: ComponentType.CONTAINER,
-            value: 'row',
+            value: '',
             items: [
                 {
                     type: ComponentType.CONTAINER,
-                    value: 'col',
-                    items: [
+                    value: 'row',
+                    items:[
                         {
-                            type: ComponentType.INPUT
+                            type: ComponentType.CONTAINER,
+                            value: 'col',
+                            items: [
+                                {
+                                    type: ComponentType.INPUT
+                                }
+                            ]
+                        },{
+                            type: ComponentType.CONTAINER,
+                            value: 'col',
+                            items: [
+                                {
+                                    type: ComponentType.INPUT
+                                }
+                            ]
+                        },{
+                            type: ComponentType.CONTAINER,
+                            value: 'col',
+                            items: [
+                                {
+                                    type: ComponentType.INPUT
+                                }
+                            ]
                         }
                     ]
-                },{
-                    type: ComponentType.CONTAINER,
-                    value: 'col',
-                    items: [
-                        {
-                            type: ComponentType.INPUT
-                        }
-                    ]
-                },{
-                    type: ComponentType.CONTAINER,
-                    value: 'col',
-                    items: [
-                        {
-                            type: ComponentType.INPUT
-                        }
-                    ]
-                }
-                
-                
+                } 
             ]
         }
 
