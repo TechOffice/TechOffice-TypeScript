@@ -21,7 +21,8 @@ import DesignerContext from '../context/DesignerContext';
             (drop)="drop($event)"
             (dragover)="dragover($event)"
             (click)="click($event)"
-            style="border: 1px solid; min-height: 5px; margin: 5px 5px 5px 5px"></div>
+            style="border: 1px solid; min-height: 5px; margin: 5px 5px 5px 5px"
+            [ngClass]="{'col':isContainer && dynamicConfig.value == 'col', 'row': isContainer && dynamicConfig.value == 'row'}"></div>
     `
 })
 export default class DynamicContainerComponent {

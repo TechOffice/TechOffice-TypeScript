@@ -42,6 +42,7 @@ export default class DynamicConfig{
 
     public assign(json: any): void{
         this.type = json["type"];
+        this.value = json["value"];
         if (this.type == ComponentType.CONTAINER){
             if (json["items"] instanceof Array){
                 let items: any[] = json["items"]

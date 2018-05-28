@@ -1,0 +1,45 @@
+import { ComponentType } from './../model/ComponentType';
+import { Component, Input } from '@angular/core';
+import DynamicConfig from '../config/DynamicConfig';
+import DesignerComponent from './DesignerComponent';
+
+@Component({
+    selector: "designer-control-panel-component",
+    template: `
+        <div>
+            Control Panel
+        </div>
+        <div>
+            <designer-control-panel-element-component
+                [componentType]="'1'"
+                [type]="'Input'"
+                [config]="config"
+                [designer]="designer">
+            </designer-control-panel-element-component>
+        </div>
+        <div>
+            <designer-control-panel-element-component
+                [componentType]="'0'"
+                [type]="'Row'"
+                [config]="config"
+                [designer]="designer">
+            </designer-control-panel-element-component>
+        </div>
+    `
+})
+export default class DesignerControlPanelComponent{
+
+    @Input()
+    config: DynamicConfig;
+
+    @Input()
+    designer: DesignerComponent;
+
+    add(event){
+        let dynamicConfig: DynamicConfig = new DynamicConfig();
+        dynamicConfig.setType(ComponentType.INPUT);
+        this.config.getItems().push(dynamicConfig);
+        dynamicConfig.setParent(this.config);
+        this.designer.add(dynamicConfig);
+    }
+}

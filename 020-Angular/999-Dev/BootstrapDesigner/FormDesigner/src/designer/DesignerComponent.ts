@@ -8,10 +8,12 @@ import DynamicContainerComponent from "./DynamicContainerComponent";
 @Component({
     selector: "designer-component",
     template: `
-        <dynamic-container-component
-            #container 
-            [dynamicConfig]="config">
-        </dynamic-container-component>
+        <div class="container">
+            <dynamic-container-component
+                #container 
+                [dynamicConfig]="config">
+            </dynamic-container-component>
+        </div>
     `
 })
 export default class DesignerComponent implements OnInit{

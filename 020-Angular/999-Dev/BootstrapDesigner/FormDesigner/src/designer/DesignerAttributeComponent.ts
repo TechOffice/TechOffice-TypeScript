@@ -23,7 +23,7 @@ import DynamicContainerComponent from './DynamicContainerComponent';
         </div>
     `
 })
-export default class DesingerAttributeComponent implements OnInit{
+export default class DesignerAttributeComponent implements OnInit{
 
     private component: DynamicContainerComponent;
     private config: DynamicConfig;

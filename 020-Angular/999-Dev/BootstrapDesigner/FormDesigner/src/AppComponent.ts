@@ -11,12 +11,10 @@ import DesignerComponent from "./designer/DesignerComponent";
         <table>
             <tr>
                 <td>
-                    <div>
-                        Control Panel
-                    </div>
-                    <div>
-                        <button (click)="add($event)">Add</button>
-                    </div>
+                    <designer-control-panel-component
+                        [config]="config"
+                        [designer]="designer">
+                    </designer-control-panel-component>
                 </td>
                 <td>
                     <designer-component
@@ -44,22 +42,35 @@ export default class AppComponent implements OnInit {
     constructor(){
         var configJson = {
             type: ComponentType.CONTAINER,
+            value: 'row',
             items: [
                 {
-                    type: ComponentType.INPUT
-                },
-                {
                     type: ComponentType.CONTAINER,
-                    items: [{
-                        type: ComponentType.CONTAINER,
-                        items: [{
-                            type: ComponentType.CONTAINER,
-                            items: [{
-                                type: ComponentType.INPUT
-                            }]
-                        }]
-                    }]
+                    value: 'col',
+                    items: [
+                        {
+                            type: ComponentType.INPUT
+                        }
+                    ]
+                },{
+                    type: ComponentType.CONTAINER,
+                    value: 'col',
+                    items: [
+                        {
+                            type: ComponentType.INPUT
+                        }
+                    ]
+                },{
+                    type: ComponentType.CONTAINER,
+                    value: 'col',
+                    items: [
+                        {
+                            type: ComponentType.INPUT
+                        }
+                    ]
                 }
+                
+                
             ]
         }
 

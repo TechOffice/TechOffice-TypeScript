@@ -8,13 +8,18 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import DesignerComponent from './designer/DesignerComponent';
 import DesingerAttributeComponent from './designer/DesignerAttributeComponent';
 import DynamicContainerComponent from './designer/DynamicContainerComponent';
+import DesignerAttributeComponent from './designer/DesignerAttributeComponent';
+import DesignerControlPanelComponent from './designer/DesignerControlPanelComponent';
+import DesignerControlPanelElementComponent from './designer/DesignerControlPanelElementComponent';
 
 @NgModule({
     declarations: [
       AppComponent,
       DynamicContainerComponent,
       DesignerComponent,
-      DesingerAttributeComponent,
+      DesignerAttributeComponent,
+      DesignerControlPanelComponent,
+      DesignerControlPanelElementComponent,
       InputComponent
     ],
     entryComponents:[
