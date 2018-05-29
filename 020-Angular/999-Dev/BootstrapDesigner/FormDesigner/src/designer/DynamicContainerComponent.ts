@@ -101,7 +101,7 @@ export default class DynamicContainerComponent {
         event.stopPropagation();
     }
 
-    drop(event){
+    drop(event: DragEvent){
         if(this.isContainer){
             let component : DynamicContainerComponent 
                 = DrapDropContext.getInstance().getComponent();
@@ -117,11 +117,11 @@ export default class DynamicContainerComponent {
         }
     }
 
-    dragover(event){
+    dragover(event: DragEvent){
         event.preventDefault();
     }
 
-    click(event){
+    click(event: MouseEvent){
         DesignerContext.getInstance().setComponent(this);
         this.isSelected = true;
         event.stopPropagation();
