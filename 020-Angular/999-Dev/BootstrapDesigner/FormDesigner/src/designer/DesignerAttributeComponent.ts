@@ -1,3 +1,4 @@
+import { ComponentRef } from '@angular/core';
 import { ElementRef } from '@angular/core';
 import { OnInit } from '@angular/core';
 import { Component } from '@angular/core';
@@ -53,12 +54,28 @@ export default class DesignerAttributeComponent implements OnInit{
     }
 
     delete(event){
-        this.config.getParent().getItems().splice(this.config.getParent().getItems().indexOf(this.config), 1);
-        this.component.componentElementRef.nativeElement.remove()
+        if (this.component && this.component){
+            this.config.getParent().getItems().splice(this.config.getParent().getItems().indexOf(this.config), 1);
+            this.component.componentElementRef.nativeElement.remove()
+        }
     }
 
     forward(event){
-        
+        if (this.component && this.component){
+            var index = -1;
+            let arr: ComponentRef<DynamicContainerComponent>[] = this.component.getParent().componentRefs;
+            for (var i=0; i<arr.length; i++){
+                let item: ComponentRef<DynamicContainerComponent> = arr[i];
+                if (item.instance == this.component){
+                    index = i;
+                }
+            }
+            if (index > 1){
+                var element = arr[index-1].instance.componentElementRef.nativeElement;
+                var parent = element.parentNode
+                parent.insertBefore(this.component.componentElementRef.nativeElement, element);
+            }
+        }
     }
 
     backward(event){

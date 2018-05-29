@@ -45,12 +45,13 @@ export default class DynamicContainerComponent {
     elementRef: ElementRef;
 
     componentRef: ComponentRef<any>;
-    componentRefs: ComponentRef<any>[] = [];
+    componentRefs: ComponentRef<DynamicContainerComponent>[] = [];
+    parent: DynamicContainerComponent;
     
     constructor(
         private componentFactoryResolver: ComponentFactoryResolver,
         private injector: Injector,
-        private viewContainer: ViewContainerRef,
+        public viewContainer: ViewContainerRef,
         private render: Renderer2,
         public componentElementRef: ElementRef
     ){
@@ -73,6 +74,7 @@ export default class DynamicContainerComponent {
                         componentRef.instance.dynamicConfig = item;
                         this.componentRefs.push(componentRef);
                         this.render.appendChild(this.elementRef.nativeElement, componentRef.location.nativeElement);
+                        componentRef.instance.setParent(this);
                     }
                 }
             }else {
@@ -90,6 +92,7 @@ export default class DynamicContainerComponent {
             this.componentFactoryResolver.resolveComponentFactory(DynamicContainerComponent);
             let componentRef: ComponentRef<DynamicContainerComponent> = this.viewContainer.createComponent(componetFactory);
             componentRef.instance.dynamicConfig = config;
+            componentRef.instance.setParent(this);
             this.render.appendChild(this.elementRef.nativeElement, componentRef.location.nativeElement);
             this.componentRefs.push(componentRef);    
         }
@@ -107,11 +110,18 @@ export default class DynamicContainerComponent {
                 = DrapDropContext.getInstance().getComponent();
             if (!ElementUtil.isParentElement(component.elementRef.nativeElement, 
                     this.elementRef.nativeElement)){
+                
+                // layout
                 this.render.appendChild(this.elementRef.nativeElement, component.elementRef.nativeElement);
+                
+                // config
                 this.dynamicConfig.getItems().push(component.dynamicConfig);
-                var index = component.dynamicConfig.getParent().getItems().indexOf(component.dynamicConfig);
-                component.dynamicConfig.getParent().getItems().splice(index, 1);
+                var configIndex = component.dynamicConfig.getParent().getItems().indexOf(component.dynamicConfig);
+                component.dynamicConfig.getParent().getItems().splice(configIndex, 1);
                 component.dynamicConfig.setParent(this.dynamicConfig);
+
+                // component
+                component.setParent(this);
             }
             event.stopPropagation();
         }
@@ -130,4 +140,13 @@ export default class DynamicContainerComponent {
     unselect(){
         this.isSelected = false;
     }
+
+    setParent(parent: DynamicContainerComponent): void{
+        this.parent = parent;
+    }
+
+    getParent(): DynamicContainerComponent{
+        return this.parent;
+    }
+
 }
