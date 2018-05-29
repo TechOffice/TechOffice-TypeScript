@@ -95,8 +95,9 @@ export default class DynamicContainerComponent {
         }
     }
 
-    dragstart(event){
+    dragstart(event: DragEvent){
         DrapDropContext.getInstance().setComponent(this);
+        event.dataTransfer.setData("dynamic_component", "true");
         event.stopPropagation();
     }
 

@@ -93,8 +93,6 @@ export default class AppComponent implements OnInit {
         this.config.getItems().push(dynamicConfig);
         dynamicConfig.setParent(this.config);
         this.designer.add(dynamicConfig);
-        // console.log(this.designer.componentRef.changeDetectorRef.detectChanges());
-        // console.log(this.designer.config);
     }
 }
 

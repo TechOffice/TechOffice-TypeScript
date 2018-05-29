@@ -3,8 +3,6 @@ import DynamicConfig from "../config/DynamicConfig";
 import DynamicContainerComponent from "./DynamicContainerComponent";
 
 
-
-
 @Component({
     selector: "designer-component",
     template: `

@@ -42,8 +42,6 @@ import ButtonComponent from './components/ButtonComponent';
   })
 export default class AppModule {
     
-
-
 }
 
 
