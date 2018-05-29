@@ -1,4 +1,5 @@
 import { ComponentType } from "../model/ComponentType";
+import { Component } from "@angular/core/src/metadata/directives";
 
 
 export default class DynamicConfig{
@@ -90,6 +91,9 @@ export default class DynamicConfig{
             }
             if (this.getType() == ComponentType.LABEL){
                 return "<label>"+this.getValue()+"</label>"
+            }
+            if (this.getType() == ComponentType.TABLE){
+                return "<table class=\"table\"><thead><tr><td class=\"col\">Column 1</td><td class=\"col\">Column 2</td></tr></thead><tbody><tr><td>Value 1</td><td>Value 2</td></td></tr><tr><td>Value 1</td><td>Value 2</td></td></tr></tbody></table>";
             }
         }
         return "";
