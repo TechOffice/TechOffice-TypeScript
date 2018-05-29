@@ -29,6 +29,7 @@ import DesignerComponent from "./designer/DesignerComponent";
             </tr>
         </table>
         <div>{{config.toJson()}}</div>
+        <div>{{config.toXml()}}</div>
     `
 })
 export default class AppComponent implements OnInit {

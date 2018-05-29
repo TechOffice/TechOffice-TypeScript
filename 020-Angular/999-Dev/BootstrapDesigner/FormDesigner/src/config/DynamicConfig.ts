@@ -64,4 +64,34 @@ export default class DynamicConfig{
             }
         });
     }
+
+    public toXml(): String{
+        if (this.getType() == ComponentType.CONTAINER){
+            var startTag = "<div"
+            if (this.getValue() =="row"){
+                startTag = startTag + " class=\"row\"";
+            }else if(this.getValue() =="col"){
+                startTag = startTag + " class=\"col\"";
+            }
+            startTag = startTag + ">";
+            var content = "";
+            for (var i=0; i<this.getItems().length; i++){
+                let item: DynamicConfig = this.getItems()[i];
+                content = content + item.toXml();
+            }
+            var endTag = "</div>";
+            return startTag + content + endTag 
+        }else{
+            if (this.getType() == ComponentType.INPUT){
+                return "<input/>"
+            }
+            if (this.getType() == ComponentType.BUTTON){
+                return "<button>"+this.getValue()+"</button>"
+            }
+            if (this.getType() == ComponentType.LABEL){
+                return "<label>"+this.getValue()+"</label>"
+            }
+        }
+        return "";
+    }
 }
