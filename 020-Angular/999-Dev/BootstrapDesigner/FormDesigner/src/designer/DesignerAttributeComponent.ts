@@ -21,8 +21,12 @@ import DynamicContainerComponent from './DynamicContainerComponent';
                     <td><input [(ngModel)]="config.value" *ngIf="config"/></td>
                 </tr>
                 <tr>
-                    <td><button (click)="delete($event)">Delete</button></td>
                     <td></td>
+                    <td>
+                        <button (click)="delete($event)" *ngIf="config">Delete</button>
+                        <button (click)="forward($event)" *ngIf="config">Forward</button>
+                        <button (click)="backward($event)" *ngIf="config">Backward</button>
+                    </td>
                 </tr>
             </table>
         </div>
@@ -51,5 +55,13 @@ export default class DesignerAttributeComponent implements OnInit{
     delete(event){
         this.config.getParent().getItems().splice(this.config.getParent().getItems().indexOf(this.config), 1);
         this.component.componentElementRef.nativeElement.remove()
+    }
+
+    forward(event){
+        
+    }
+
+    backward(event){
+
     }
 }
