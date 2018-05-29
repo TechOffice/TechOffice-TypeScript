@@ -44,34 +44,6 @@ export default class DesignerControlPanelElementComponent{
         this.designer.add(dynamicConfig);
     }
 
-    addWithRow(event){
-        let dynamicConfigContainer: DynamicConfig = new DynamicConfig();
-        dynamicConfigContainer.setType(ComponentType.CONTAINER);
-        dynamicConfigContainer.setValue('row')
-        let dynamicConfig: DynamicConfig = new DynamicConfig();
-        dynamicConfig.setType(this.componentType);
-        dynamicConfig.setValue(this.value);
-        dynamicConfigContainer.getItems().push(dynamicConfig);
-
-        this.config.getItems().push(dynamicConfigContainer);
-        dynamicConfigContainer.setParent(this.config);
-        this.designer.add(dynamicConfigContainer);
-    }
-    
-    addWithCol(event){
-        let dynamicConfigContainer: DynamicConfig = new DynamicConfig();
-        dynamicConfigContainer.setType(ComponentType.CONTAINER);
-        dynamicConfigContainer.setValue('col')
-        let dynamicConfig: DynamicConfig = new DynamicConfig();
-        dynamicConfig.setType(this.componentType);
-        dynamicConfig.setValue(this.value);
-        dynamicConfigContainer.getItems().push(dynamicConfig);
-
-        this.config.getItems().push(dynamicConfigContainer);
-        dynamicConfigContainer.setParent(this.config);
-        this.designer.add(dynamicConfigContainer);
-    }
-
     addInSelect(event){
         if (DesignerContext.getInstance().getComponent().isContainer){
             let dynamicConfig: DynamicConfig = new DynamicConfig();
@@ -92,10 +64,11 @@ export default class DesignerControlPanelElementComponent{
             dynamicConfig.setType(this.componentType);
             dynamicConfig.setValue(this.value);
             dynamicConfigContainer.getItems().push(dynamicConfig);
+            dynamicConfig.setParent(dynamicConfigContainer);
     
             this.config.getItems().push(dynamicConfigContainer);
-            dynamicConfig.setParent(DesignerContext.getInstance().getComponent().dynamicConfig);
-            DesignerContext.getInstance().getComponent().add(dynamicConfig)
+            dynamicConfigContainer.setParent(DesignerContext.getInstance().getComponent().dynamicConfig);
+            DesignerContext.getInstance().getComponent().add(dynamicConfigContainer)
         }
     }
 
@@ -108,10 +81,11 @@ export default class DesignerControlPanelElementComponent{
             dynamicConfig.setType(this.componentType);
             dynamicConfig.setValue(this.value);
             dynamicConfigContainer.getItems().push(dynamicConfig);
+            dynamicConfig.setParent(dynamicConfigContainer);
     
             this.config.getItems().push(dynamicConfigContainer);
-            dynamicConfig.setParent(DesignerContext.getInstance().getComponent().dynamicConfig);
-            DesignerContext.getInstance().getComponent().add(dynamicConfig)
+            dynamicConfigContainer.setParent(DesignerContext.getInstance().getComponent().dynamicConfig);
+            DesignerContext.getInstance().getComponent().add(dynamicConfigContainer)
         }
     }
 }
