@@ -5,6 +5,7 @@ import DynamicConfig from '../config/DynamicConfig';
 import { ComponentType } from '../model/ComponentType';
 import LabelComponent from '../components/LabelComponent';
 import ButtonComponent from '../components/ButtonComponent';
+import TableComponent from '../components/TableComponent';
 
 export default class ComponentFactoryService{
     
@@ -25,6 +26,8 @@ export default class ComponentFactoryService{
             componetFactory = componentFactoryResolver.resolveComponentFactory(LabelComponent);
         }else if (config.getType() == ComponentType.BUTTON){
             componetFactory = componentFactoryResolver.resolveComponentFactory(ButtonComponent);
+        }else if (config.getType() == ComponentType.TABLE){
+            componetFactory = componentFactoryResolver.resolveComponentFactory(TableComponent);    
         }
         let componentRef:   ComponentRef<any> = viewContainer.createComponent(componetFactory);
         componentRef.instance.config = config;

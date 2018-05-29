@@ -53,6 +53,15 @@ import DesignerComponent from './DesignerComponent';
                 [value]="'New Button'">
             </designer-control-panel-element-component>
         </div>
+        <div>
+            <designer-control-panel-element-component
+                [componentType]="'4'"
+                [type]="'Table'"
+                [config]="config"
+                [designer]="designer"
+                [value]="'New Table'">
+            </designer-control-panel-element-component>
+        </div>
     `
 })
 export default class DesignerControlPanelComponent{
@@ -63,11 +72,4 @@ export default class DesignerControlPanelComponent{
     @Input()
     designer: DesignerComponent;
 
-    add(event){
-        let dynamicConfig: DynamicConfig = new DynamicConfig();
-        dynamicConfig.setType(ComponentType.INPUT);
-        this.config.getItems().push(dynamicConfig);
-        dynamicConfig.setParent(this.config);
-        this.designer.add(dynamicConfig);
-    }
 }

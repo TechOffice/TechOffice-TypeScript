@@ -4,6 +4,7 @@ export enum ComponentType {
     CONTAINER,
     INPUT,
     LABEL,
-    BUTTON
+    BUTTON,
+    TABLE
 }
 
