@@ -28,8 +28,15 @@ export default class ElementUtil{
             }
         }
         if (index > 0){
-            var element = arr[index+direction].instance.componentElementRef.nativeElement;
-            var parent = element.parentNode
+            if (direction > 0 ){
+                direction = direction + 1;
+            }
+            var parent = arr[index].instance.componentElementRef.nativeElement.parentNode;
+            var element  = null;
+            var elementItem = arr[index+direction];
+            if (elementItem != null){
+                var element = arr[index+direction].instance.componentElementRef.nativeElement;
+            } 
             parent.insertBefore(component.componentElementRef.nativeElement, element);
         }
 

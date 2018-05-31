@@ -70,6 +70,9 @@ export default class DesignerAttributeComponent implements OnInit{
     }
 
     backward(event){
-
+        if (this.component && this.config){
+            ElementUtil.move(this.component, 1);            
+            ArrayUtil.move(this.config.getParent().getItems(), this.config, 1);
+        }
     }
 }
