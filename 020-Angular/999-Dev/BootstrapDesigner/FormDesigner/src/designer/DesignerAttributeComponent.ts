@@ -5,6 +5,8 @@ import { Component } from '@angular/core';
 import DynamicConfig from '../config/DynamicConfig';
 import DesignerContext from '../context/DesignerContext';
 import DynamicContainerComponent from './DynamicContainerComponent';
+import ElementUtil from '../util/ElementUtil';
+import ArrayUtil from '../util/ArrayUtil';
 
 
 
@@ -54,27 +56,16 @@ export default class DesignerAttributeComponent implements OnInit{
     }
 
     delete(event){
-        if (this.component && this.component){
+        if (this.component && this.config){
             this.config.getParent().getItems().splice(this.config.getParent().getItems().indexOf(this.config), 1);
             this.component.componentElementRef.nativeElement.remove()
         }
     }
 
     forward(event){
-        if (this.component && this.component){
-            var index = -1;
-            let arr: ComponentRef<DynamicContainerComponent>[] = this.component.getParent().componentRefs;
-            for (var i=0; i<arr.length; i++){
-                let item: ComponentRef<DynamicContainerComponent> = arr[i];
-                if (item.instance == this.component){
-                    index = i;
-                }
-            }
-            if (index > 1){
-                var element = arr[index-1].instance.componentElementRef.nativeElement;
-                var parent = element.parentNode
-                parent.insertBefore(this.component.componentElementRef.nativeElement, element);
-            }
+        if (this.component && this.config){
+            ElementUtil.move(this.component, -1);            
+            ArrayUtil.move(this.config.getParent().getItems(), this.config, -1);
         }
     }
 
