@@ -4,6 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import AppComponent from './AppComponent';
 import AppDetailComponent from './AppDetailComponent';
+import AppService from './AppService';
 
 
 @NgModule({
@@ -16,7 +17,9 @@ import AppDetailComponent from './AppDetailComponent';
       AppComponent,
       AppDetailComponent
     ],
-    providers: [],
+    providers: [
+      AppService
+    ],
     bootstrap: [AppComponent]
   })
 export default class AppModule {

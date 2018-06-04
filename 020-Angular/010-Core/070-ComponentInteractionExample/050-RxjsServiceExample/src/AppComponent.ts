@@ -3,8 +3,9 @@ import { Component } from "@angular/core";
 @Component({
     selector: "app-component",
     template: `
-        <app-detail-component [title]="title" #child></app-detail-component>
-        <button (click)="child.call()">Call Child Component Method<button>
+        <app-detail-component [title]="title" ></app-detail-component>
+        <app-detail-component [title]="title" ></app-detail-component>
+        <app-detail-component [title]="title" ></app-detail-component>
     `
 })
 export default class AppComponent{
@@ -14,7 +15,7 @@ export default class AppComponent{
         this.title = "Hello";
     }
 
-  
+
 }
 
 
