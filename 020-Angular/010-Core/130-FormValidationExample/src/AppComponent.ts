@@ -5,12 +5,15 @@ import { Component } from "@angular/core";
     template: `
         <h1>{{title}}</h1>
         <div>
-            <input [(ngModel)]="title" required/>
+            <input [(ngModel)]="test" required/>
+            {{test}}
         </div>
-    `
+    `,
+    styles: ['.ng-invalid { border: 1px solid red; }']    
 })
 export default class AppComponent{
     title = "Hello World";
+    test  = "";
 }
 
 
