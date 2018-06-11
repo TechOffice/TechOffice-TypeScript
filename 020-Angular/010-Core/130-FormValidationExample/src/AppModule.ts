@@ -1,5 +1,6 @@
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { NgModule } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import AppComponent from './AppComponent';
 
@@ -9,7 +10,9 @@ import AppComponent from './AppComponent';
       AppComponent
     ],
     imports: [
-      BrowserModule
+      BrowserModule,
+      FormsModule,
+      ReactiveFormsModule
     ],
     providers: [],
     bootstrap: [AppComponent]
