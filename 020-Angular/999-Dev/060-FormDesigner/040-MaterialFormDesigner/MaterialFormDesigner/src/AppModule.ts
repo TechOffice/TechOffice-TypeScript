@@ -14,6 +14,7 @@ import DesignerControlPanelElementComponent from './designer/DesignerControlPane
 import LabelComponent from './components/LabelComponent';
 import ButtonComponent from './components/ButtonComponent';
 import TableComponent from './components/TableComponent';
+import {MatButtonModule, MatCheckboxModule} from '@angular/material';
 
 @NgModule({
     declarations: [
@@ -26,7 +27,8 @@ import TableComponent from './components/TableComponent';
       InputComponent,
       LabelComponent,
       ButtonComponent,
-      TableComponent
+      TableComponent,
+      MatButtonModule
     ],
     entryComponents:[
       DynamicContainerComponent,
