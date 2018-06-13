@@ -1,4 +1,3 @@
-import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import AppComponent from './AppComponent';
@@ -6,7 +5,6 @@ import InputComponent from './components/InputComponent';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import DesignerComponent from './designer/DesignerComponent';
-import DesingerAttributeComponent from './designer/DesignerAttributeComponent';
 import DynamicContainerComponent from './designer/DynamicContainerComponent';
 import DesignerAttributeComponent from './designer/DesignerAttributeComponent';
 import DesignerControlPanelComponent from './designer/DesignerControlPanelComponent';
@@ -14,7 +12,8 @@ import DesignerControlPanelElementComponent from './designer/DesignerControlPane
 import LabelComponent from './components/LabelComponent';
 import ButtonComponent from './components/ButtonComponent';
 import TableComponent from './components/TableComponent';
-import {MatButtonModule, MatCheckboxModule} from '@angular/material';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {MatButtonModule, MatCheckboxModule, MatFormFieldModule, MatInputModule} from '@angular/material';
 
 @NgModule({
     declarations: [
@@ -27,8 +26,7 @@ import {MatButtonModule, MatCheckboxModule} from '@angular/material';
       InputComponent,
       LabelComponent,
       ButtonComponent,
-      TableComponent,
-      MatButtonModule
+      TableComponent
     ],
     entryComponents:[
       DynamicContainerComponent,
@@ -39,8 +37,13 @@ import {MatButtonModule, MatCheckboxModule} from '@angular/material';
     ],
     imports: [
       BrowserModule,
+      BrowserAnimationsModule,
       FormsModule,
-      ReactiveFormsModule
+      ReactiveFormsModule,
+      MatButtonModule,
+      MatCheckboxModule,
+      MatFormFieldModule,
+      MatInputModule
     ],
     providers: [],
     bootstrap: [AppComponent]
