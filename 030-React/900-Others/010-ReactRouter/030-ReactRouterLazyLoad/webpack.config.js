@@ -12,14 +12,17 @@ module.exports = {
 		loaders: [
 			{
 				test: /\.tsx$/,
-				loaders: ['babel-loader', 'ts-loader'],
+				loaders: [{
+					loader: 'babel-loader',
+					options: {
+						plugins: ["syntax-dynamic-import"]
+					}
+				}, {
+					loader: 'ts-loader'
+				}],
 				exclude: [
 					/node_modules/
-				],
-				options: {
-					presets: ['es2015'],
-					plugins: ["syntax-dynamic-import"]
-				}
+				]
 			}
 		]
 	},
