@@ -5,6 +5,7 @@ import { Component } from "react";
 import * as React from "react";
 import { Home } from "./component/Home";
 import { Component1 } from "./component/Component1";
+import Routes from "./Routes";
 
 class App extends Component{
     
@@ -25,8 +26,11 @@ ReactDOM.render(
     <MemoryRouter>
         <div>
             <App/>
-            <Route exact path="/" component={Home}/>
-            <Route path="/Component1" component={Component1}/>
+            {
+                Routes.map((route)=>(
+                    <Route key={route.path} path={route.path} component={route.component}/>
+                ))
+            }
         </div>
     </MemoryRouter>
 , document.getElementById("app"));

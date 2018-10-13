@@ -15,11 +15,7 @@ module.exports = {
 				loaders: ['babel-loader', 'ts-loader'],
 				exclude: [
 					/node_modules/
-				],
-				options: {
-					presets: ['es2015'],
-					plugins: ["syntax-dynamic-import"]
-				}
+				]
 			}
 		]
 	},
