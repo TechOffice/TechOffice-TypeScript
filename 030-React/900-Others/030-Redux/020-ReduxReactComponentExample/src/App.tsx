@@ -40,7 +40,7 @@ class App extends React.Component<Props, State>{
             <div>
                 <h1>Hello World</h1>
                 <div>
-                    <button onClick={this.props.onClick.bind(event, 1)}>Add</button>
+                    <button onClick={this.props.onClick.bind(this, 1)}>Add</button>
                 </div>
                 <div>Number: {this.props.counter}</div>
             </div>            

@@ -1966,19 +1966,6 @@ var App = /** @class */function (_super) {
         _this.state = { counter: props.counter };
         return _this;
     }
-    App.prototype.componentWillMount = function () {
-        console.log('componentWillMount');
-    };
-    App.prototype.componentDidMount = function () {
-        console.log('componentDidMount');
-    };
-    App.prototype.componentWillReceiveProps = function (nextProps) {
-        console.log('componentWillReceiveProps', nextProps);
-        debugger;
-    };
-    App.prototype.componentWillUnmount = function () {
-        console.log('componentWillUnmount');
-    };
     App.prototype.render = function () {
         return React.createElement("div", null, React.createElement("h1", null, "Hello World"), React.createElement("div", null, React.createElement("button", { onClick: this.props.onClick.bind(event, 1) }, "Add")), React.createElement("div", null, "Number: ", this.props.counter));
     };
