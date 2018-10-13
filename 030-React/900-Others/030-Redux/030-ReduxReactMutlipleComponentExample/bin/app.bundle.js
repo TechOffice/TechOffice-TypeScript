@@ -1954,12 +1954,27 @@ var __extends = this && this.__extends || function () {
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = __webpack_require__(2);
 var ReactDOM = __webpack_require__(32);
-var MapStateToProps_1 = __webpack_require__(41);
 var react_redux_1 = __webpack_require__(42);
-var MapDispatchToProps_1 = __webpack_require__(71);
 var reducer_1 = __webpack_require__(72);
 var redux_1 = __webpack_require__(20);
-var App = /** @class */function (_super) {
+var ChildComponent_1 = __webpack_require__(73);
+var ActionKey_1 = __webpack_require__(28);
+exports.mapStateToProps = function (state) {
+    return {
+        counter: state.counter
+    };
+};
+exports.mapDispatchToProps = function (dispatch) {
+    return {
+        onClick: function (n) {
+            dispatch({
+                type: ActionKey_1.ActionKey.INCREASE_COUNTER,
+                n: n
+            });
+        }
+    };
+};
+var App = react_redux_1.connect(exports.mapStateToProps, exports.mapDispatchToProps)( /** @class */function (_super) {
     __extends(App, _super);
     function App(props) {
         var _this = _super.call(this, props) || this;
@@ -1967,13 +1982,12 @@ var App = /** @class */function (_super) {
         return _this;
     }
     App.prototype.render = function () {
-        return React.createElement("div", null, React.createElement("h1", null, "Hello World"), React.createElement("div", null, React.createElement("button", { onClick: this.props.onClick.bind(event, 1) }, "Add")), React.createElement("div", null, "Number: ", this.props.counter));
+        return React.createElement("div", null, React.createElement("h1", null, "Hello World"), React.createElement("div", null, React.createElement("button", { onClick: this.props.onClick.bind(this, 1) }, "Add")), React.createElement("div", null, "Number: ", this.props.counter), React.createElement(ChildComponent_1.default, null));
     };
     return App;
-}(React.Component);
-var ConnectedApp = react_redux_1.connect(MapStateToProps_1.MapStateToProps, MapDispatchToProps_1.MapDispatchToProps)(App);
+}(React.Component));
 var store = redux_1.createStore(reducer_1.Reducer, { counter: 0 });
-ReactDOM.render(React.createElement(react_redux_1.Provider, { store: store }, React.createElement(ConnectedApp, null)), document.getElementById('app'));
+ReactDOM.render(React.createElement(react_redux_1.Provider, { store: store }, React.createElement(App, null)), document.getElementById('app'));
 
 /***/ }),
 /* 30 */
@@ -19265,20 +19279,7 @@ function camelize(string) {
 module.exports = camelize;
 
 /***/ }),
-/* 41 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.MapStateToProps = function (state) {
-    return {
-        counter: state.counter
-    };
-};
-
-/***/ }),
+/* 41 */,
 /* 42 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -21203,26 +21204,7 @@ function verifySubselectors(mapStateToProps, mapDispatchToProps, mergeProps, dis
 }
 
 /***/ }),
-/* 71 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", { value: true });
-var ActionKey_1 = __webpack_require__(28);
-exports.MapDispatchToProps = function (dispatch) {
-    return {
-        onClick: function (n) {
-            dispatch({
-                type: ActionKey_1.ActionKey.INCREASE_COUNTER,
-                n: n
-            });
-        }
-    };
-};
-
-/***/ }),
+/* 71 */,
 /* 72 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -21247,6 +21229,58 @@ exports.Reducer = function (state, action) {
             return state;
     }
 };
+
+/***/ }),
+/* 73 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var __extends = this && this.__extends || function () {
+    var extendStatics = Object.setPrototypeOf || { __proto__: [] } instanceof Array && function (d, b) {
+        d.__proto__ = b;
+    } || function (d, b) {
+        for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+    };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() {
+            this.constructor = d;
+        }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+}();
+Object.defineProperty(exports, "__esModule", { value: true });
+var React = __webpack_require__(2);
+var ActionKey_1 = __webpack_require__(28);
+var react_redux_1 = __webpack_require__(42);
+var mapStateToProps = function (state) {
+    return {
+        counter: state.counter
+    };
+};
+var mapDispatchToProps = function (dispatch) {
+    return {
+        onClick: function (n) {
+            dispatch({
+                type: ActionKey_1.ActionKey.INCREASE_COUNTER,
+                n: n
+            });
+        }
+    };
+};
+var ChildComponent = react_redux_1.connect(mapStateToProps, mapDispatchToProps)( /** @class */function (_super) {
+    __extends(ChildComponent, _super);
+    function ChildComponent(props) {
+        return _super.call(this, props) || this;
+    }
+    ChildComponent.prototype.render = function () {
+        return React.createElement("div", null, React.createElement("h2", null, " Child Component "), React.createElement("button", { onClick: this.props.onClick.bind(this, 1) }, "Add"), React.createElement("div", null, "Number: ", this.props.counter));
+    };
+    return ChildComponent;
+}(React.Component));
+exports.default = ChildComponent;
 
 /***/ })
 /******/ ]);
