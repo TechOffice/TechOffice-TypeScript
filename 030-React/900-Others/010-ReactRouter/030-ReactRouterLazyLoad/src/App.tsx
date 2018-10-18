@@ -21,6 +21,10 @@ class App extends Component{
     }
 }
 
+const home = () => import("./component/Home");
+const component1 = () => import("./component/Component1");
+
+
 ReactDOM.render(  
     <MemoryRouter>
         <div>

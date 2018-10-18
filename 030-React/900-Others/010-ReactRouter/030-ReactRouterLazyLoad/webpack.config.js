@@ -3,6 +3,7 @@ const path = require('path');
 module.exports = {
 	entry: './src/App.tsx',
 	output: {
+		publicPath: 'bin/',		
 		path: path.resolve(__dirname, 'bin'),
 		filename: '[name].bundle.js',
 		chunkFilename: '[name].bundle.js'
@@ -15,6 +16,7 @@ module.exports = {
 				loaders: [{
 					loader: 'babel-loader',
 					options: {
+						presets: ['es2015'],
 						plugins: ["syntax-dynamic-import"]
 					}
 				}, {
