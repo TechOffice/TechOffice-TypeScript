@@ -6,7 +6,12 @@
         "outDir": "target",
         "jsx": "react",
         "moduleResolution": "node",
-        "allowJs": true
+        "allowJs": true,
+        "allowSyntheticDefaultImports": true,
+        "lib": [
+            "dom",
+            "es2015"
+        ]
     },
     "include": [
         "src/**/*"

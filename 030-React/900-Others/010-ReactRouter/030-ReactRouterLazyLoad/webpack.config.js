@@ -1,7 +1,9 @@
 const path = require('path');
 
 module.exports = {
-	entry: './src/App.tsx',
+	entry: {
+		app: 	'./src/App.tsx'
+	},
 	output: {
 		path: path.resolve(__dirname, 'bin'),
 		filename: '[name].bundle.js',
@@ -15,10 +17,9 @@ module.exports = {
 				loaders: [{
 					loader: 'babel-loader',
 					options: {
+						presets: ['es2015', 'react'],
 						plugins: ["syntax-dynamic-import"]
 					}
-				}, {
-					loader: 'ts-loader'
 				}],
 				exclude: [
 					/node_modules/
