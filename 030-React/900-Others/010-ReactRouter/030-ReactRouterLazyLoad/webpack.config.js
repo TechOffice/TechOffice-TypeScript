@@ -5,6 +5,7 @@ module.exports = {
 		app: 	'./src/App.tsx'
 	},
 	output: {
+		publicPath: 'bin/',		
 		path: path.resolve(__dirname, 'bin'),
 		filename: '[name].bundle.js',
 		chunkFilename: '[name].bundle.js'
