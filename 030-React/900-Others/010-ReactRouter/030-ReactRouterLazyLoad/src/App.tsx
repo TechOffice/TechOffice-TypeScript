@@ -33,17 +33,23 @@ const component1 = Loadable({
     loading: () => <div>loading</div>
 });
   
-const home = Loadable({
-    loader: () => import('./component/Home'),
-    loading: () => <div>loading</div>
-});
+
 
 ReactDOM.render(  
     <MemoryRouter>
         <div>
             <App/>
-            <Route exact path="/" component={home}/>
-            <Route path="/Component1" component={component1}/>
+            <Route exact path="/" component={
+                Loadable({
+                    loader: () => import('./component/Home'),
+                    loading: () => <div>loading</div>
+                })
+            }/>
+            <Route path="/Component1" component={
+                Loadable({
+                loader: () => import('./component/Component1'),
+                loading: () => <div>loading</div>
+            })}/>
         </div>
     </MemoryRouter>
 , document.getElementById("app"));
