@@ -5,6 +5,7 @@ import { MemoryRouter, Route } from "react-router";
 import ButtonComponent from "./component/ButtonComponent";
 import { Link } from "react-router-dom";
 import HomeComponent from "./component/HomeComponent";
+import DrawerComponent from "./component/DrawerComponent";
 
 
 class App extends React.Component{
@@ -17,6 +18,7 @@ class App extends React.Component{
                     <ul>
                     <li><Link to="/">Home</Link></li>
                     <li><Link to="/button">Button</Link></li>
+                    <li><Link to="/drawer">Drawer</Link></li>
                 </ul>
                 </h1>
             </div>            
@@ -31,6 +33,7 @@ ReactDOM.render(
         <App />
             <Route exact path="/" component={HomeComponent}/>
             <Route path="/button" component={ButtonComponent}/>
+            <Route path="/drawer" component={DrawerComponent}/>
         </div>
     </MemoryRouter>, 
 document.getElementById('app'));
