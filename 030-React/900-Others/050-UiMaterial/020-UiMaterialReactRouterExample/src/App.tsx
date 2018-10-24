@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 import DrawerComponent from "./component/DrawerComponent";
 import TableComponent from "./component/TableComponent";
 import TabComponent from "./component/TabComponent";
+import DialogComponent from "./component/DialogComponent";
 
 
 class App extends React.Component{
@@ -21,6 +22,7 @@ class App extends React.Component{
                     <li><Link to="/Table">Table</Link></li>
                     <li><Link to="/Tab">Tab</Link></li>
                     <li><Link to="/drawer">Drawer</Link></li>
+                    <li><Link to="/dialog">Dialog</Link></li>
                 </ul>
                 </h1>
             </div>            
@@ -38,6 +40,7 @@ ReactDOM.render(
             <Route path="/table" component={TableComponent}/>
             <Route path="/tab" component={TabComponent}/>
             <Route path="/drawer" component={DrawerComponent}/>
+            <Route path="/dialog" component={DialogComponent}/>
         </div>
     </MemoryRouter>, 
 document.getElementById('app'));
