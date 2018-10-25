@@ -8,13 +8,15 @@ import DrawerComponent from "./component/DrawerComponent";
 import TableComponent from "./component/TableComponent";
 import TabComponent from "./component/TabComponent";
 import DialogComponent from "./component/DialogComponent";
+import FormComponent from "./component/FormComponent";
+import Paper from "@material-ui/core/Paper";
 
 
 class App extends React.Component{
     
     render(){
         return (
-            <div>
+            <Paper>
                 <h1>
                     UI Material Example
                     <ul>
@@ -23,9 +25,10 @@ class App extends React.Component{
                     <li><Link to="/Tab">Tab</Link></li>
                     <li><Link to="/drawer">Drawer</Link></li>
                     <li><Link to="/dialog">Dialog</Link></li>
+                    <li><Link to="/form">Form</Link></li>
                 </ul>
                 </h1>
-            </div>            
+            </Paper>            
         )
     }
 
@@ -41,6 +44,7 @@ ReactDOM.render(
             <Route path="/tab" component={TabComponent}/>
             <Route path="/drawer" component={DrawerComponent}/>
             <Route path="/dialog" component={DialogComponent}/>
+            <Route path="/form" component={FormComponent}/>
         </div>
     </MemoryRouter>, 
 document.getElementById('app'));
