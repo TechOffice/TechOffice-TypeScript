@@ -1,12 +1,15 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
-import { combineReducers } from "redux";
+import { combineReducers, createStore } from "redux";
 import { reducer } from 'redux-form';
 import SimpleFormComponent from "./SimpleFormComponent";
+import { Provider } from "react-redux";
 
 const rootReducer = combineReducers({
     form: reducer
 });
+
+const store = createStore(rootReducer);
 
 class App extends React.Component{
     
@@ -15,12 +18,18 @@ class App extends React.Component{
             <div>
                 <h1>Hello World</h1>
                 <SimpleFormComponent/>
+                <div>
+                </div>
             </div>            
         )
     }
 
 }
 
-ReactDOM.render(<App />, document.getElementById('app'));
+ReactDOM.render(
+    <Provider store={store}>
+        <App />
+    </Provider>, 
+document.getElementById('app'));
 
     
