@@ -9,12 +9,12 @@ let store = createStore(function(state: State, action: Action){
             if (action.n){
                 state.counter += action.n;
             }
-            return state.counter;
+            return state;
         case ActionKey.DECREASE_COUNTER:
             if (action.n){
                 state.counter -= action.n;
             }
-            return state.counter;
+            return state;
         default:
             return state;
     }
@@ -24,7 +24,3 @@ let store = createStore(function(state: State, action: Action){
 
 export default store;
 
-console.log(store.getState());
-console.log(store.dispatch({type: ActionKey.INCREASE_COUNTER, n: 10}));
-console.log(store.dispatch({type: ActionKey.DECREASE_COUNTER, n: 10}));
-console.log(store.getState());
