@@ -13,7 +13,7 @@ export interface Props {
     onClick: (n: number) => void
 }
 
-@(reduxConnect(MapStateToProps, MapDispatchToProps) as any)
+@reduxConnect(MapStateToProps, MapDispatchToProps) 
 class App extends React.Component<any, any>{
     
     constructor(props){
