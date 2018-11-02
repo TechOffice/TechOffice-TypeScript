@@ -1,9 +1,8 @@
 import { createStore, Store } from "redux";
-import { State } from "./State";
 import { ActionKey } from "./action/ActionKey";
 import { Action } from "./action/Action";
 
-export const Reducer = function(state: State, action: Action){
+export const Reducer = function(state: any, action: Action){
     switch(action.type){
         case ActionKey.INCREASE_COUNTER:
             if (action.n){

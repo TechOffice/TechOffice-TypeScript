@@ -1,19 +1,30 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 import { connect, Provider, DispatchProp } from "react-redux";
-import { MapDispatchToProps } from "./store/MapDispatchToProps";
-import {MapStateToProps } from "./store/MapStateToProps";
 import { Reducer } from "./store/reducer";
 import { createStore } from "redux";
-import { reduxConnect } from "./reduxConnect";
-import { State } from "./store/State";
+import { ActionKey } from "./store/action/ActionKey";
 
-export interface Props {
-    counter: number,
-    onClick: (n: number) => void
-}
 
-@reduxConnect(MapStateToProps, MapDispatchToProps) 
+@(connect( 
+    // map state to props
+    function(state: any){
+        return {
+            counter: state.counter
+        }
+    },
+    // map dispatch to props
+    function(dispatch){
+        return {
+            onClick: function(n){
+                dispatch({
+                    type: ActionKey.INCREASE_COUNTER,
+                    n: n
+                })
+            }
+        }
+    }
+) as any)
 class App extends React.Component<any, any>{
     
     constructor(props){
