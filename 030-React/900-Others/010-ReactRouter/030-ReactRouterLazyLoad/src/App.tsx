@@ -47,9 +47,10 @@ ReactDOM.render(
             }/>
             <Route path="/Component1" component={
                 Loadable({
-                loader: () => import('./component/Component1'),
-                loading: () => <div>loading</div>
-            })}/>
+                    loader: () => import('./component/Component1'),
+                    loading: () => <div>loading</div>
+                })
+            }/>
         </div>
     </MemoryRouter>
 , document.getElementById("app"));
