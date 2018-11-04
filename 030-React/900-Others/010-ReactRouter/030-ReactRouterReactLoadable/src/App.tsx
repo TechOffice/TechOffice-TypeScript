@@ -3,7 +3,7 @@ import { BrowserRouter, Link, MemoryRouter } from "react-router-dom";
 import { Route } from "react-router";
 import { Component } from "react";
 import * as React from "react";
-import { default as Loadable } from 'react-loadable';
+import * as Loadable from 'react-loadable/lib/index';
 
 class App extends Component{
     

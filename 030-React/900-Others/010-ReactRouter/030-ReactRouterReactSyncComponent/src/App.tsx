@@ -3,7 +3,7 @@ import { BrowserRouter, Link, MemoryRouter } from "react-router-dom";
 import { Route } from "react-router";
 import { Component } from "react";
 import * as React from "react";
-import * as Loadable from 'react-loadable/lib/index';
+import { asyncComponent } from 'react-async-component';
 import Home from "./component/Home";
 import Component1 from "./component/Component1";
 
@@ -24,12 +24,21 @@ class App extends Component{
 }
 
 
+  
+
 ReactDOM.render(  
     <MemoryRouter>
         <div>
             <App/>
-            <Route exact path="/" component={Home}/>
-            <Route path="/Component1" component={Component1}/>
+            <Route exact path="/" component={
+                asyncComponent({
+                    resolve: () => import('./component/Home')
+                })
+            }/>
+            <Route path="/Component1" component={                
+                asyncComponent({
+                    resolve: () => import('./component/Component1')
+                })}/>
         </div>
     </MemoryRouter>
 , document.getElementById("app"));
