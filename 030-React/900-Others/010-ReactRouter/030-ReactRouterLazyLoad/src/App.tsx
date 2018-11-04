@@ -4,6 +4,7 @@ import { Route } from "react-router";
 import { Component } from "react";
 import * as React from "react";
 import { default as Loadable } from 'react-loadable';
+
 class App extends Component{
     
     render(){
@@ -19,20 +20,6 @@ class App extends Component{
         )
     }
 }
-
-class Abc extends React.Component{
-    render(){
-        return (
-            <div></div>
-        );
-    }
-}
-
-const component1 = Loadable({
-    loader: () => import('./component/Component1'),
-    loading: () => <div>loading</div>
-});
-  
 
 
 ReactDOM.render(  
