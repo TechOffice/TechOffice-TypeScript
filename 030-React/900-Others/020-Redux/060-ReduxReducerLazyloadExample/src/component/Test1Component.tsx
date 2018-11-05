@@ -7,11 +7,8 @@ import React from "react";
     },
     function(dispatch){
         return{
-            alert1: function(){
-                dispatch({type: "alert1"});
-            },
-            alert2: function(){
-                dispatch({type: "alert2"});
+            alert: function(){
+                dispatch({type: "alert"});
             }
         };
     }
@@ -22,6 +19,9 @@ export default class Test1Component extends React.Component<any, any>{
         return (
             <div>
                 <h1>Test 1 Component</h1>
+                <div>
+                    <button onClick={()=>this.props.alert1()}>alert</button>
+                </div>
             </div>
         );
     }

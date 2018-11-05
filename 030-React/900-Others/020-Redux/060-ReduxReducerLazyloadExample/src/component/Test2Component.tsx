@@ -7,11 +7,8 @@ import { connect } from "react-redux";
     },
     function(dispatch){
         return{
-            alert1: function(){
-                dispatch({type: "alert1"});
-            },
-            alert2: function(){
-                dispatch({type: "alert2"});
+            alert: function(){
+                dispatch({type: "alert"});
             }
         };
     }
@@ -21,7 +18,10 @@ export default class Test2Component extends React.Component<any, any>{
     render(){
         return (
             <div>
-                <h1>Test 1 Component</h1>
+                <h1>Test 2 Component</h1>
+                <div>
+                    <button onClick={()=>this.props.alert1()}>alert</button>
+                </div>
             </div>
         );
     }

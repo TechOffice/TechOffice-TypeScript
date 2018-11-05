@@ -4,8 +4,6 @@ import { Route } from "react-router";
 import { Component } from "react";
 import * as React from "react";
 import { asyncComponent } from 'react-async-component';
-import Home from "./component/Home";
-import Component1 from "./component/Component1";
 
 class App extends Component{
     
