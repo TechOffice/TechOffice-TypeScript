@@ -1,0 +1,15 @@
+{
+    "compilerOptions": {
+        "target": "es5",
+        "module": "commonjs",
+        "outDir": "target",
+        "jsx": "react",
+        "moduleResolution": "node",
+        "allowJs": true,
+        "sourceMap": true,
+        "experimentalDecorators": true 
+    },
+    "include": [
+        "src/**/*"
+    ]
+}   
