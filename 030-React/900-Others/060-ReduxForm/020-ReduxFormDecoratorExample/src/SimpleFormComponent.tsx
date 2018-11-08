@@ -2,7 +2,8 @@ import * as React from 'react';
 import { Dispatch } from 'redux';
 import { Field, reduxForm, FormProps, FormErrors, InjectedFormProps } from 'redux-form';
 
-class SimpleFormComponent extends React.Component<InjectedFormProps , any >{
+@(reduxForm({form : 'simple'}) as any)
+export default class SimpleFormComponent extends React.Component<InjectedFormProps | {} , any >{
 
     constructor(props){
         super(props);
@@ -17,6 +18,5 @@ class SimpleFormComponent extends React.Component<InjectedFormProps , any >{
     }
 }
 
-export default reduxForm({form : 'simple'})(SimpleFormComponent);
 
 
