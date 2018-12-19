@@ -11,7 +11,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@material-ui/core": "^3.4.0",
+    "@material-ui/core": "^3.7.0",
     "@material-ui/icons": "^3.0.1",
     "@types/react": "^16.4.18",
     "@types/react-dom": "^16.0.9",
@@ -22,10 +22,10 @@
     "import": "^0.0.6",
     "react": "^16.6.1",
     "react-dom": "^16.6.1",
-    "react-redux": "^5.1.0",
+    "react-redux": "^8.0.4",
     "react-transition-group": "^2.5.0",
-    "redux": "^3.7.2",
-    "redux-form": "^7.4.2"
+    "redux": "^4.0.1",
+    "redux-form": "^8.0.4"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",
