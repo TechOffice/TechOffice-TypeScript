@@ -3,7 +3,7 @@ import { Dispatch } from 'redux';
 import { Field, reduxForm, FormProps, FormErrors, InjectedFormProps } from 'redux-form';
 import TextField from "@material-ui/core/TextField";
 
-const f = field=><TextField {...field.input}/>
+const textField = field=><TextField {...field.input}/>
 
 @(reduxForm({form : 'simple'}) as any)
 export default class SimpleFormComponent extends React.Component<InjectedFormProps | {} , any >{
@@ -15,8 +15,7 @@ export default class SimpleFormComponent extends React.Component<InjectedFormPro
     render(){
         return (
             <form >
-                <Field name="firstName" component={f}/>
-
+                <Field name="firstName" component={textField}/>
             </form>
         );
     }
